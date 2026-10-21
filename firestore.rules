@@ -1,0 +1,55 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Es administrador quien tiene un documento con su ID en la colección "admins".
+    // Esos documentos solo se crean a mano desde la consola de Firebase.
+    function esAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    // Ficha de cada cliente (se crea al registrarse). Solo la lee el administrador.
+    match /usuarios/{uid} {
+      allow read: if esAdmin();
+      allow create: if request.auth != null
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['nombre', 'email', 'fecha'])
+        && request.resource.data.nombre is string
+        && request.resource.data.nombre.size() <= 60
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.fecha == request.time;
+      allow update, delete: if false;
+    }
+
+    // Cada persona lee y escribe SOLO su lista de destacados (el admin también puede leerla).
+    match /favoritos/{uid} {
+      allow read: if request.auth != null && (request.auth.uid == uid || esAdmin());
+      allow create, update: if request.auth != null
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['ids'])
+        && request.resource.data.ids is list
+        && request.resource.data.ids.size() <= 50;
+      allow delete: if false;
+    }
+
+    // Los puntajes los puede ver cualquiera, pero cada persona
+    // solo puede cargar o cambiar su propio voto (de 1 a 5).
+    match /votos/{votoId} {
+      allow read: if true;
+      allow create, update: if request.auth != null
+        && request.resource.data.keys().hasOnly(['productoId', 'uid', 'n'])
+        && request.resource.data.uid == request.auth.uid
+        && votoId == string(request.resource.data.productoId) + '_' + request.auth.uid
+        && request.resource.data.n is int
+        && request.resource.data.n >= 1
+        && request.resource.data.n <= 5;
+      allow delete: if false;
+    }
+  }
+}
