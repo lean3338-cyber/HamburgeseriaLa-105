@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Panel del dueño | La 105</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/logo.jpg">
+  <link rel="stylesheet" href="css/styles.css?v=11">
+</head>
+<body class="admin-body">
+
+  <header class="admin-top">
+    <div class="container admin-top-inner">
+      <a href="index.html" class="admin-brand"><img src="img/logo.jpg" alt="La 105" class="logo-img"> <span>Panel del dueño</span></a>
+      <div class="admin-actions hidden" id="adminActions">
+        <span class="user-name" id="adminUser"></span>
+        <button class="btn btn-outline btn-sm" id="refreshBtn">↻ Actualizar</button>
+        <button class="link-btn" id="adminLogout">Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container admin-main">
+
+    <p class="admin-banner hidden" id="demoBanner">
+      <strong>Modo demostración.</strong> Estás viendo solo los datos guardados en este navegador.
+      Para ver los de todos los clientes hay que conectar Firebase (guía incluida).
+    </p>
+
+    <!-- Ingreso del dueño -->
+    <section class="admin-login hidden" id="adminLogin">
+      <h1>Ingreso del dueño</h1>
+      <p>Entrá con el email y la contraseña de tu cuenta.</p>
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label for="aEmail">Email</label>
+          <input type="email" id="aEmail" required placeholder="tu@email.com" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="aPass">Contraseña</label>
+          <input type="password" id="aPass" required placeholder="Tu contraseña" autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+      </form>
+      <p class="auth-msg hidden" id="adminMsg"></p>
+    </section>
+
+    <!-- Cuenta sin permiso -->
+    <section class="admin-login hidden" id="adminDenied">
+      <h1>Esta cuenta no es administradora</h1>
+      <p>Para darle permiso, entrá a la consola de Firebase → <em>Firestore Database</em> → creá la colección
+        <code>admins</code> y un documento cuyo ID sea este código (puede ir vacío, o con un campo cualquiera):</p>
+      <p class="admin-uid" id="adminUid"></p>
+      <p class="admin-hint">Los pasos con imágenes están en <strong>GUIA-FIREBASE.md</strong>, sección “Panel del dueño”. Después tocá “Actualizar”.</p>
+      <button class="btn btn-outline" id="deniedRetry">↻ Ya lo hice, actualizar</button>
+      <button class="link-btn" id="deniedLogout">Salir</button>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="hidden" id="adminDash">
+      <h1 class="admin-title">Estadísticas</h1>
+      <p class="admin-hint" id="updatedAt"></p>
+
+      <div class="kpis">
+        <div class="kpi"><span class="kpi-num" id="kClientes">0</span><span class="kpi-label">Clientes registrados</span></div>
+        <div class="kpi"><span class="kpi-num" id="kVotos">0</span><span class="kpi-label">Puntajes recibidos</span></div>
+        <div class="kpi"><span class="kpi-num" id="kProm">–</span><span class="kpi-label">Puntaje promedio</span></div>
+        <div class="kpi"><span class="kpi-num" id="kFavs">0</span><span class="kpi-label">Destacados guardados</span></div>
+      </div>
+
+      <div class="admin-grid">
+        <div class="admin-card">
+          <h2>⭐ Mejor puntuados</h2>
+          <p class="admin-hint">Promedio de estrellas y cantidad de votos.</p>
+          <div class="rank" id="rankRating"></div>
+        </div>
+        <div class="admin-card">
+          <h2>❤️ Más destacados</h2>
+          <p class="admin-hint">Cuántos clientes lo guardaron como favorito.</p>
+          <div class="rank" id="rankFavs"></div>
+        </div>
+        <div class="admin-card">
+          <h2>📈 Registros por día</h2>
+          <p class="admin-hint">Clientes nuevos en los últimos 14 días.</p>
+          <div class="days" id="daysChart"></div>
+        </div>
+        <div class="admin-card">
+          <h2>🆕 Últimos clientes</h2>
+          <p class="admin-hint">Los 8 registros más recientes.</p>
+          <ul class="client-list" id="clientList"></ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/firebase-config.js?v=11"></script>
+  <script src="js/productos.js?v=11"></script>
+  <script src="js/admin.js?v=11"></script>
+</body>
+</html>

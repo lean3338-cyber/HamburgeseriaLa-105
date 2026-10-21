@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La 105 | Hamburguesas y Pizzas</title>
+  <meta name="description" content="La 105: hamburguesas rápidas y llenadoras, papas fritas y pizzas. Av. Humberto Pérez 7310. Pedí por WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/logo.jpg">
+  <link rel="stylesheet" href="css/styles.css?v=11">
+</head>
+<body>
+
+  <!-- Barra de Navegación -->
+  <header class="header" id="header">
+    <nav class="navbar container">
+      <a href="#inicio" class="logo">
+        <img src="img/logo.jpg" alt="La 105" class="logo-img">
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Conocenos</a></li>
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#destacados">❤️ Mis destacados</a></li>
+        <li><a href="#cartas">Cartas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="user-box hidden" id="userBox">
+          <span class="user-name" id="userName"></span>
+          <button class="link-btn" id="logoutBtn">Salir</button>
+        </div>
+        <button class="btn btn-outline btn-sm" id="authBtn">👤 Ingresar</button>
+        <button class="cart-btn" id="openCartBtn" title="Ver pedido">
+          🛒 <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <a href="#menu" class="btn btn-primary btn-sm nav-cta">Pedir Ahora</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <span class="badge">🔥 Rápidas y llenadoras</span>
+        <h1>La 105</h1>
+        <p>
+          Hamburguesas hechas en el momento, papas fritas y pizzas.
+          Elegí tu combo y pedilo por WhatsApp.
+        </p>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-primary btn-lg">Ver el Menú</a>
+          <button type="button" class="btn btn-outline btn-lg" onclick="abrirWhatsApp('Hola! Quiero hacer un pedido')">
+            📱 Pedir por WhatsApp
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>🍔 Desde $4.000</strong>
+            <span>Hamburguesa simple</span>
+          </div>
+          <div class="stat">
+            <strong>🍕 Desde $9.000</strong>
+            <span>Pizza muzzarella</span>
+          </div>
+          <div class="stat">
+            <strong>📍 Humberto Pérez 7310</strong>
+            <span>Nuestro local</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="hero-photo">
+          <img src="img/local-ventana.jpg" alt="Cartel luminoso del local La 105" class="hero-img" id="heroImg">
+          <div class="hero-fallback">🍔</div>
+        </div>
+        <div class="floating-tag">
+          ⭐ <strong>Pizzas y hamburguesas</strong> al mejor precio
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Por qué elegirnos -->
+  <section class="features" id="beneficios">
+    <div class="container">
+      <div class="section-title">
+        <span class="subtitle">LO QUE NOS GUSTA</span>
+        <h2>Simple, rico y rápido</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔥</div>
+          <h3>Hechas al momento</h3>
+          <p>Cocinamos en la plancha cuando hacés tu pedido.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🍟</div>
+          <h3>Con papas fritas</h3>
+          <p>Combos de hamburguesa con papas, o papas solas.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🍕</div>
+          <h3>También pizzas</h3>
+          <p>Muzzarella, jamón y queso, y napolitana.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Pedí por WhatsApp</h3>
+          <p>Armá tu pedido acá y lo enviamos directo al local.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conocenos -->
+  <section class="about" id="nosotros">
+    <div class="container">
+      <div class="section-title">
+        <span class="subtitle">CONOCENOS</span>
+        <h2>El local y la plancha</h2>
+        <p>Cocina a la vista, pan tostado y mucha dedicación.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="img/cocinero.jpg" alt="Nuestro cocinero trabajando en la plancha" loading="lazy">
+          <div class="photo-fallback"><span>👨‍🍳</span><small>Foto del cocinero</small></div>
+        </div>
+        <div class="about-text">
+          <h3>Nuestra historia</h3>
+          <p>Acá va la historia de La 105: cómo empezó, quién cocina y qué los hace distintos. Contame y lo escribo por vos.</p>
+          <div class="gallery">
+            <div class="gallery-item">
+              <img src="img/cocina-panes.jpg" alt="Panes tostándose en la parrilla" loading="lazy">
+              <div class="photo-fallback"><span>🍞</span></div>
+            </div>
+            <div class="gallery-item">
+              <img src="img/local-ventana.jpg" alt="Cartel luminoso abierto" loading="lazy">
+              <div class="photo-fallback"><span>💡</span></div>
+            </div>
+            <div class="gallery-item">
+              <img src="img/local-frente.jpg" alt="Frente del local de noche" loading="lazy">
+              <div class="photo-fallback"><span>🏠</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menú -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="section-title">
+        <span class="subtitle">NUESTRA CARTA</span>
+        <h2>Elegí lo que más te guste</h2>
+        <p>Tocá ❤️ para guardar un favorito y ★ para puntuar (necesitás una cuenta).</p>
+      </div>
+
+      <div class="menu-filters">
+        <button class="filter-btn active" data-filter="todas">Todas</button>
+        <button class="filter-btn" data-filter="combos">Burger + Papas</button>
+        <button class="filter-btn" data-filter="solo">Solo Burger</button>
+        <button class="filter-btn" data-filter="compartir">Para compartir</button>
+        <button class="filter-btn" data-filter="pizzas">Pizzas</button>
+      </div>
+
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <!-- Mis destacados -->
+  <section class="favorites-section" id="destacados">
+    <div class="container">
+      <div class="section-title">
+        <span class="subtitle">TUS FAVORITOS</span>
+        <h2>❤️ Mis Destacados</h2>
+        <p>Guardá lo que más te gusta para pedirlo rápido.</p>
+      </div>
+      <div class="menu-grid" id="favoritesGrid"></div>
+    </div>
+  </section>
+
+  <!-- Cartas originales -->
+  <section class="cartas-section" id="cartas">
+    <div class="container">
+      <div class="section-title">
+        <span class="subtitle">NUESTRAS CARTAS</span>
+        <h2>Mirá la carta completa</h2>
+        <p>Tocá una imagen para verla en grande.</p>
+      </div>
+      <div class="cartas-grid">
+        <a href="img/carta-hamburguesas.jpg" target="_blank" rel="noopener" class="carta-card">
+          <img src="img/carta-hamburguesas.jpg" alt="Carta de hamburguesas, papas y bebidas de La 105" loading="lazy">
+          <span>🍔 Hamburguesas y papas</span>
+        </a>
+        <a href="img/carta-pizzas.jpg" target="_blank" rel="noopener" class="carta-card">
+          <img src="img/carta-pizzas.jpg" alt="Carta de pizzas de La 105" loading="lazy">
+          <span>🍕 Pizzas</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo -->
+  <section class="promo-banner" id="promos">
+    <div class="container promo-content">
+      <div class="promo-text">
+        <span class="promo-tag">PARA COMPARTIR</span>
+        <h2>4 Hamburguesas + 2 Papas 🔥</h2>
+        <p>4 hamburguesas completas y 2 porciones de papas fritas. Ideal para juntarse.</p>
+        <div class="promo-price">
+          <span class="new-price">$23.000</span>
+        </div>
+        <button class="btn btn-primary btn-lg" onclick="agregarAlCarrito(9)">Agregar al pedido</button>
+      </div>
+      <div class="promo-img">
+        <div class="promo-emoji">🍔🍟</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="contact-section" id="contacto">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="subtitle">VISITANOS O PEDÍ POR WHATSAPP</span>
+          <h2>Dónde estamos</h2>
+
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <div>
+              <strong>Dirección</strong>
+              <p>Av. Humberto Pérez 7310</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icon">📞</span>
+            <div>
+              <strong>Teléfonos / WhatsApp</strong>
+              <p>🍔 Hamburguesas: <a href="https://wa.me/5493764176490" target="_blank" rel="noopener">3764-176490</a></p>
+              <p>🍕 Pizzas: <a href="https://wa.me/5493764963338" target="_blank" rel="noopener">3764-963338</a></p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icon">⏰</span>
+            <div>
+              <strong>Horarios</strong>
+              <p>Consultá por WhatsApp.</p>
+            </div>
+          </div>
+
+          <div class="map-wrap">
+            <iframe
+              title="Mapa de La 105"
+              src="https://www.google.com/maps?q=-27.410066,-55.931760&z=17&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <a class="btn btn-outline btn-sm map-link" href="https://maps.app.goo.gl/bcfmpMBehwVeRgW16" target="_blank" rel="noopener">📍 Abrir en Google Maps</a>
+        </div>
+
+        <div class="contact-form-card">
+          <h3>Escribinos una consulta</h3>
+          <p>Dudas, encargos o pedidos grandes. Te respondemos por WhatsApp.</p>
+
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" required placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+              <label for="phone">Teléfono / WhatsApp</label>
+              <input type="tel" id="phone" required placeholder="Tu número">
+            </div>
+            <div class="form-group">
+              <label for="message">Mensaje</label>
+              <textarea id="message" rows="4" required placeholder="¿En qué te podemos ayudar?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Enviar por WhatsApp</button>
+          </form>
+          <div id="formFeedback" class="form-feedback hidden"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal de Ingreso / Registro -->
+  <div class="auth-backdrop" id="authBackdrop">
+    <div class="auth-card">
+      <button class="close-cart-btn auth-close" id="closeAuthBtn">&times;</button>
+      <h3>Bienvenido 👋</h3>
+      <p class="auth-hint" id="authHint">Ingresá para guardar destacados y puntuar.</p>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Ingresar</button>
+        <button class="auth-tab" data-tab="register">Registrarme</button>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" required placeholder="tu@email.com">
+        </div>
+        <div class="form-group">
+          <label for="loginPass">Contraseña</label>
+          <input type="password" id="loginPass" required placeholder="Tu contraseña">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+      </form>
+
+      <form id="registerForm" class="auth-form hidden">
+        <div class="form-group">
+          <label for="regName">Nombre</label>
+          <input type="text" id="regName" required placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label for="regEmail">Email</label>
+          <input type="email" id="regEmail" required placeholder="tu@email.com">
+        </div>
+        <div class="form-group">
+          <label for="regPass">Contraseña (mínimo 6)</label>
+          <input type="password" id="regPass" required minlength="6" placeholder="Elegí una contraseña">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Crear mi cuenta</button>
+      </form>
+
+      <p class="auth-msg hidden" id="authMsg"></p>
+      <p class="auth-demo hidden" id="authDemo">Modo demostración: las cuentas y puntajes se guardan solo en este navegador.</p>
+    </div>
+  </div>
+
+  <!-- Elegir número de WhatsApp -->
+  <div class="auth-backdrop" id="waBackdrop">
+    <div class="auth-card">
+      <button class="close-cart-btn auth-close" id="closeWaBtn">&times;</button>
+      <h3>¿A qué número escribimos?</h3>
+      <p class="auth-hint">Hay un WhatsApp para hamburguesas y otro para pizzas.</p>
+      <div class="wa-options">
+        <button class="btn btn-primary btn-block wa-num" data-n="0">🍔 Hamburguesas · 3764-176490</button>
+        <button class="btn btn-primary btn-block wa-num" data-n="1">🍕 Pizzas · 3764-963338</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carrito -->
+  <div class="cart-modal-backdrop" id="cartBackdrop">
+    <aside class="cart-drawer" id="cartDrawer">
+      <div class="cart-header">
+        <h3>🛒 Tu Pedido</h3>
+        <button class="close-cart-btn" id="closeCartBtn">&times;</button>
+      </div>
+
+      <div class="cart-items" id="cartItems">
+        <p class="empty-cart-msg">Tu carrito está vacío. ¡Elegí algo rico!</p>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Total:</span>
+          <span class="cart-total-amount" id="cartTotal">$0</span>
+        </div>
+        <button class="btn btn-primary btn-block btn-checkout" id="checkoutWhatsappBtn">
+          📲 Enviar Pedido por WhatsApp
+        </button>
+        <button class="btn btn-outline btn-block btn-clear" id="clearCartBtn">
+          Vaciar Carrito
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <a href="#inicio" class="logo">🍔 La<span class="highlight">105</span></a>
+        <p>Hamburguesas y pizzas. Rápidas y llenadoras.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="#nosotros">Conocenos</a></li>
+          <li><a href="#contacto">Ubicación</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p>Av. Humberto Pérez 7310</p>
+        <p>🍔 Hamburguesas: 3764-176490</p>
+        <p>🍕 Pizzas: 3764-963338</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 La 105. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/firebase-config.js?v=11"></script>
+  <script src="js/auth.js?v=11"></script>
+  <script src="js/productos.js?v=11"></script>
+  <script src="js/main.js?v=11"></script>
+</body>
+</html>
